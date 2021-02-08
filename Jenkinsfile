@@ -4,7 +4,7 @@ pipeline {
         registry = "himanshu1170/spring_demo" 
         registryCredential = 'docker_hub_id' 
         dockerImage = '' 
-        fileName=":$BUILD_NUMBER" +"-${new Date().format("yyMMdd.HHmm", TimeZone.getTimeZone('UTC'))}"
+        fileName=":$BUILD_NUMBER" +"-${new Date().format("ddMMyy.HHmm", TimeZone.getTimeZone('UTC'))}"
         latestDockerTag="himanshu1170_spring_demo-latest" 
     }
     agent any 
@@ -47,7 +47,7 @@ pipeline {
                 //sh 'ssh -t -t ubuntu@ec2-13-232-192-86.ap-south-1.compute.amazonaws.com -o StrictHostKeyChecking=no " docker stop $registry:latest"'
                 //sh 'ssh -t -t ubuntu@ec2-13-232-192-86.ap-south-1.compute.amazonaws.com -o StrictHostKeyChecking=no " docker rm $registry:latest"'
                 sh 'ssh -t -t ubuntu@ec2-13-232-192-86.ap-south-1.compute.amazonaws.com -o StrictHostKeyChecking=no " docker rm -f $latestDockerTag"'
-                sh 'ssh -t -t ubuntu@ec2-13-232-192-86.ap-south-1.compute.amazonaws.com -o StrictHostKeyChecking=no "docker run -d -p 9100:80 --name=$latestDockerTag  $registry:latest" '
+                sh 'ssh -t -t ubuntu@ec2-13-232-192-86.ap-south-1.compute.amazonaws.com -o StrictHostKeyChecking=no "docker run -d -p 9100:8282 --name=$latestDockerTag  $registry:latest" '
                 }
              }
          }
