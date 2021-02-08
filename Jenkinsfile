@@ -47,7 +47,7 @@ pipeline {
                 //sh 'ssh -t -t ubuntu@ec2-13-232-192-86.ap-south-1.compute.amazonaws.com -o StrictHostKeyChecking=no " docker stop $registry:latest"'
                 //sh 'ssh -t -t ubuntu@ec2-13-232-192-86.ap-south-1.compute.amazonaws.com -o StrictHostKeyChecking=no " docker rm $registry:latest"'
                 sh 'ssh -t -t ubuntu@ec2-13-232-192-86.ap-south-1.compute.amazonaws.com -o StrictHostKeyChecking=no " docker rm -f $latestDockerTag"'
-                sh 'ssh -t -t ubuntu@ec2-13-232-192-86.ap-south-1.compute.amazonaws.com -o StrictHostKeyChecking=no "docker run -d -p 7000:80 --name=$latestDockerTag  $registry:latest" '
+                sh 'ssh -t -t ubuntu@ec2-13-232-192-86.ap-south-1.compute.amazonaws.com -o StrictHostKeyChecking=no "docker run -d -p 9100:80 --name=$latestDockerTag  $registry:latest" '
                 }
              }
          }
