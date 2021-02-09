@@ -2,7 +2,7 @@
 FROM maven:3.6.0-jdk-11-slim AS build
 ENV HOME=/home/app
 RUN mkdir -p $HOME
-
+WORKDIR $HOME
 ADD pom.xml $HOME
 
 RUN ["/usr/local/bin/mvn-entrypoint.sh", "mvn", "verify", "clean", "--fail-never"]
