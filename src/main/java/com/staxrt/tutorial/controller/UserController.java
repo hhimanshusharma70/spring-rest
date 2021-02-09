@@ -46,7 +46,7 @@ public class UserController {
   @ResponseBody
   public List<Test> getAllUsers() {
 	  List<Test> testList= new ArrayList<>();
-	  testList.add(new Test("Himanshu",12));
+	  testList.add(new Test("Himanshu",1234));
     return testList;
   }
 }
